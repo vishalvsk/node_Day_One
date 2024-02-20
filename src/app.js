@@ -9,6 +9,12 @@ const folderPath = path.join(__dirname, "textFiles");
 if (!fs.existsSync(folderPath)) {
   fs.mkdirSync(folderPath);
 }
+const createTextFilesFolder = (req, res, next) => {
+  if (!fs.existsSync(folderPath)) {
+    fs.mkdirSync(folderPath);
+  }
+  next();
+};
 app.use(createTextFilesFolder);
 
 // Endpoint to create a text file with current timestamp
